@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': 0.35.1
+  '@react-oauth/google': 0.7.0
   '@sanity/client': 4.0.1
   '@sanity/image-url': 1.0.2
   '@types/node': 18.11.0
@@ -14,6 +15,7 @@ specifiers:
   eslint: 8.25.0
   eslint-plugin-react: 7.31.10
   eslint-plugin-react-hooks: 4.6.0
+  jwt-decode: 3.1.2
   postcss-import: 15.0.0
   react: 18.2.0
   react-dom: 18.2.0
@@ -28,8 +30,10 @@ specifiers:
   vite: 4.0.4
 
 dependencies:
+  '@react-oauth/google': 0.7.0_biqbaboplfbrettd7655fr4n2y
   '@sanity/client': 4.0.1
   '@sanity/image-url': 1.0.2
+  jwt-decode: 3.1.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-google-login: 5.2.2_biqbaboplfbrettd7655fr4n2y
@@ -584,6 +588,16 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@react-oauth/google/0.7.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-KLLYlLYYpXf1zmcrsJPAxImvoq2b0Rs0Pi/6GYfdwjmTh66Pf6jkZ4fpO10tuJuUPWvEeqloPEC/i4BySgbYVQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /@remix-run/router/1.3.1:
     resolution: {integrity: sha512-+eun1Wtf72RNRSqgU7qM2AMX/oHp+dnx7BHk1qhK5ZHzdHTUU4LA1mGG1vT+jMc8sbhG3orvsfOmryjzx2PzQw==}
@@ -2669,6 +2683,10 @@ packages:
       array-includes: 3.1.6
       object.assign: 4.1.4
     dev: true
+
+  /jwt-decode/3.1.2:
+    resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
+    dev: false
 
   /levn/0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
