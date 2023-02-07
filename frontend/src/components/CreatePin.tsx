@@ -1,6 +1,8 @@
 import React from 'react'
+import { useUserStore } from '@/stores/useUserStore'
 
-const CreatePin = ({ user }: { user?: User }) => {
+const CreatePin = () => {
+  const { user } = useUserStore()
   return (
     <div>CreatePin</div>
   )

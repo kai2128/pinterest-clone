@@ -1,7 +1,8 @@
 import React from 'react'
-import type { User } from '@/types'
+import { useUserStore } from '@/stores/useUserStore'
 
-const PinDetail = ({ user }: { user?: User }) => {
+const PinDetail = () => {
+  const { user } = useUserStore()
   return (
     <div>PinDetail</div>
   )

@@ -6,22 +6,25 @@ import { useNavigate } from 'react-router-dom'
 import shareVideo from '../assets/share.mp4'
 import logo from '../assets/logowhite.png'
 import { client } from '@/client'
+import { useUserStore } from '@/stores/useUserStore'
 
 const Login = () => {
   const navigate = useNavigate()
+  const userStore = useUserStore(navigate)
   const responseGoogle = (res: CredentialResponse) => {
     const cre = jwtDecode(res.credential!) as OAuthUser
-    localStorage.setItem('user', JSON.stringify(cre))
-    const { name, picture, sub: googleId } = cre
-    const doc = {
-      _id: googleId,
-      _type: 'user',
-      username: name,
-      image: picture,
-    }
-    client.createIfNotExists(doc).then(() => {
-      navigate('/', { replace: true })
-    })
+    userStore.login(cre)
+    // localStorage.setItem('user', JSON.stringify(cre))
+    // const { name, picture, sub: googleId } = cre
+    // const doc = {
+    //   _id: googleId,
+    //   _type: 'user',
+    //   username: name,
+    //   image: picture,
+    // }
+    // client.createIfNotExists(doc).then(() => {
+    //   navigate('/', { replace: true })
+    // })
   }
   return (
     <div className='relative flex justify-center items-center flex-col h-screen'>

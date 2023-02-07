@@ -4,7 +4,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { RiHomeFill } from 'react-icons/ri'
 import logo from '../assets/logo.png'
-import type { User } from '@/types'
+import { useUserStore } from '@/stores/useUserStore'
 
 const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 border-black text-black transition-colors duration-200 ease-in-out capitalize'
 const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-colors duration-200 ease-in-out capitalize '
@@ -18,7 +18,8 @@ const categories = [
   { name: 'other' },
 ]
 
-const Sidebar = ({ user, closeToggle }: { user?: User; closeToggle?: Dispatch<SetStateAction<boolean>> }) => {
+const Sidebar = ({ closeToggle }: { closeToggle?: Dispatch<SetStateAction<boolean>> }) => {
+  const { user } = useUserStore()
   const handleCloseSideBar = () => {
     if (closeToggle)
       closeToggle(false)

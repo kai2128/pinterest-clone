@@ -7,13 +7,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nanostores/react": "0.4.1",
     "@react-oauth/google": "0.7.0",
     "@sanity/client": "4.0.1",
     "@sanity/image-url": "1.0.2",
     "jwt-decode": "3.1.2",
+    "nanostores": "0.7.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-google-login": "5.2.2",
     "react-icons": "4.7.1",
     "react-loader-spinner": "5.3.4",
     "react-masonry-css": "1.0.16",

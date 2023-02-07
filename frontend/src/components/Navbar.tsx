@@ -2,11 +2,12 @@ import { IoMdSearch } from 'react-icons/io'
 import type { Dispatch, SetStateAction } from 'react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import type { User } from '@/types'
+import { useUserStore } from '@/stores/useUserStore'
 
-interface Props { searchTerm: string; setSearchTerm: Dispatch<SetStateAction<string>>; user?: User }
-const Navbar = ({ searchTerm, setSearchTerm, user }: Props) => {
+interface Props { searchTerm: string; setSearchTerm: Dispatch<SetStateAction<string>>}
+const Navbar = ({ searchTerm, setSearchTerm }: Props) => {
   const navigate = useNavigate()
+  const { user } = useUserStore()
 
   if (!user)
     return null
