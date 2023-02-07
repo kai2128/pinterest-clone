@@ -1,5 +1,4 @@
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import type { SanityBase } from './types'
 
 export interface SanityBase {
   _id: string
@@ -34,6 +33,7 @@ export interface User extends SanityBase {
 
 export interface Category extends SanityBase {
   _type: 'category'
+  _id: string
   name: string
   image: string
 }
