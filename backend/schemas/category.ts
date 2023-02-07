@@ -9,6 +9,11 @@ export default defineType({
       name: 'name',
       title: 'Name',
       type: 'string'
+    },
+    {
+      name: 'image',
+      title: 'Image',
+      type: 'string',
     }
   ]
 })

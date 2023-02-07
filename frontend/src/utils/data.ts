@@ -35,6 +35,9 @@ export const searchQuery = (searchTerm?: string) => {
   return query
 }
 
+// eslint-disable-next-line @typescript-eslint/quotes
+export const categoriesQuery = `*[ _type == 'category']{image, name}`
+
 export const feedQuery = `*[ _type == 'pin'] | order(_createdAt desc) {
       image {
         asset -> {
