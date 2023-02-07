@@ -23,7 +23,8 @@ export default defineType({
     {
       name: 'category',
       title: 'Category',
-      type: 'category'
+      type: 'reference',
+      to: [{ type: 'category' }]
     },
     {
       name: 'image',

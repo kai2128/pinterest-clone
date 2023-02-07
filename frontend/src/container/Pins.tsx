@@ -6,6 +6,7 @@ import { useUserStore } from '@/stores/useUserStore'
 const Pins = () => {
   const { user } = useUserStore()
   const [searchTerm, setSearchTerm] = useState('')
+
   return (
     <div className='px-2 md:px-5'>
       <div className='bg-gray-50'>

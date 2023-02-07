@@ -1,6 +1,7 @@
 import sanityClient from '@sanity/client'
 
 import imageUrlBuider from '@sanity/image-url'
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
 export const client = sanityClient({
   projectId: import.meta.env.VITE_REACT_APP_SANITY_PROJECT_ID,
@@ -12,4 +13,4 @@ export const client = sanityClient({
 
 const builder = imageUrlBuider(client)
 
-export const urlFor = (src: string) => builder.image(src)
+export const urlFor = (src: SanityImageSource | string) => builder.image(src)
