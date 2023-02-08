@@ -1,4 +1,5 @@
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import type { SanityBase } from './types'
 
 export interface SanityBase {
   _id: string
@@ -12,6 +13,24 @@ export interface Pin {
   imageUrl: string
   postedBy: PostedBy
   save: null | Save[]
+}
+
+export interface PinDetail extends SanityBase {
+  about: string
+  category: Category
+  comments: Comment[]
+  destination: string
+  image: SanityImageSource
+  imageUrl: string
+  postedBy: PostedBy
+  save: null
+  title: string
+}
+
+export interface Comment {
+  _key: string
+  comment: string
+  postedBy: PostedBy
 }
 
 export interface Save {
@@ -36,4 +55,12 @@ export interface Category extends SanityBase {
   _id: string
   name: string
   image: string
+}
+
+export interface MorePin extends SanityBase {
+  destination: string
+  image: SanityImageSource
+  imageUrl: string
+  postedBy: PostedBy
+  save: Save[]
 }

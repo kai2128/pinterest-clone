@@ -26,7 +26,7 @@ const CreatePin = () => {
   const validTypes = ['image/png', 'image/svg', 'image/jpeg', 'image/gif', 'image/tiff']
   const navigate = useNavigate()
   const uploadImage = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files[0]
+    const selectedFile = e.target.files![0]
 
     if (validTypes.includes(selectedFile.type)) {
       setWrongImageType(false)

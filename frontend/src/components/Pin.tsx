@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { IoMdDownload } from 'react-icons/io'
 import { BsFillArrowUpRightCircleFill } from 'react-icons/bs'
 import * as uuid from 'uuid'
-import { client, urlFor } from '@/client'
-import type { Pin as PinType } from '@/types'
-import { useUserStore } from '@/stores/useUserStore'
 import { AiTwotoneDelete } from 'react-icons/ai'
+import { client, urlFor } from '@/client'
+import type { MorePin, Pin as PinType } from '@/types'
+import { useUserStore } from '@/stores/useUserStore'
 
-const Pin = ({ pin: { postedBy, image, _id, destination, save, imageUrl } }: { pin: PinType }) => {
-  const [postHovered, setPostHovered] = useState(true)
+const Pin = ({ pin: { postedBy, image, _id, destination, save, imageUrl } }: { pin: PinType | MorePin }) => {
+  const [postHovered, setPostHovered] = useState(false)
   const { user } = useUserStore()
   const navigate = useNavigate()
   const alreadySaved = !!(save?.filter(item => item.postedBy._id === user._id))?.length
@@ -72,7 +72,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save, imageUrl } }: { p
               {
                 destination && (
                   <a href={destination} target='_blank' rel='noreferrer' className='bg-white flex items-center gap-2 text-black font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-md max-w-[80%]'>
-                    <BsFillArrowUpRightCircleFill></BsFillArrowUpRightCircleFill>
+                    <BsFillArrowUpRightCircleFill className='flex-shrink-0'></BsFillArrowUpRightCircleFill>
                     <p className='text-ellipsis whitespace-nowrap overflow-hidden'>{destination}</p>
                   </a>
                 )
