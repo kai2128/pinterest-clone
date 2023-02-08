@@ -15,7 +15,7 @@ const Pins = () => {
       <div className='h-full'>
         <Routes>
           <Route path='/' element={<Feed></Feed>}></Route>
-          <Route path='/category/:categoryId' element={<Feed></Feed>}></Route>
+          <Route path='/category/:categoryName' element={<Feed></Feed>}></Route>
           <Route path='/pin-detail/:pinId' element={<PinDetail></PinDetail>}></Route>
           <Route path='/create-pin' element={<CreatePin></CreatePin>}></Route>
           <Route path='search' element={<Search {...{ searchTerm, setSearchTerm }}></Search>}></Route>

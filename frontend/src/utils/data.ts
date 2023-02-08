@@ -1,4 +1,4 @@
-import { PinDetail } from './../types';
+import type { PinDetail } from './../types'
 export const userQuery = (userId: string) => {
   const query
     // groq
@@ -9,13 +9,13 @@ export const userQuery = (userId: string) => {
 export const searchQuery = (searchTerm?: string) => {
   const query
     // groq
-    = `*[_type == 'pin' && title match '${searchTerm}*' || category match '${searchTerm}*' || about match '${searchTerm}*']{
+    = `*[_type == 'pin' && title match '${searchTerm}*' || category->name match '${searchTerm}*' || about match '${searchTerm}*']{
       image {
         asset -> {
           url
         }
       },
-      imageUrl: image.asset->url ,
+      "imageUrl": image.asset->url ,
       _id,
       destination,
       postedBy -> {
@@ -115,7 +115,7 @@ export const feedQuery = `*[ _type == 'pin'] | order(_createdAt desc) {
           url
         }
       },
-      "imageUrl": image.asset->url,
+      "imageUrl": image.asset.url,
       _id,
       destination,
       postedBy -> {
@@ -132,3 +132,57 @@ export const feedQuery = `*[ _type == 'pin'] | order(_createdAt desc) {
         },
       },
 }`
+
+export const userCreatedPinsQuery = (id: string) => {
+  return `
+    *[_type == 'pin' && userId == '${id}'] | order(_createdAt desc){
+      image{
+        asset->{
+          url
+        }
+      },
+      'imageUrl': image.asset.url,
+      destination,
+      _id,
+      postedBy->{
+        _id,
+        username,
+        image
+      },
+      save[]{
+        postedBy->{
+          _id,
+          username,
+          image
+        }
+      }
+    }
+  `
+}
+
+export const userSavedPinsQuery = (id: string) => {
+  return `
+    *[_type == 'pin' && '${id}' in save[].userId] | order(_createdAt desc){
+      image{
+        asset->{
+          url
+        }
+      },
+      'imageUrl': image.asset.url,
+      _id,
+      destination,
+      postedBy->{
+        _id,
+        username,
+        image
+      },
+      save[]{
+        postedBy->{
+          _id,
+          username,
+          image
+        }
+      }
+    }
+  `
+}

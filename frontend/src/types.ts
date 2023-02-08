@@ -12,7 +12,7 @@ export interface Pin {
   image: SanityImageSource
   imageUrl: string
   postedBy: PostedBy
-  save: null | Save[]
+  save: null | Pin[]
 }
 
 export interface PinDetail extends SanityBase {
@@ -31,11 +31,6 @@ export interface Comment {
   _key: string
   comment: string
   postedBy: PostedBy
-}
-
-export interface Save {
-  postedBy: PostedBy
-  userId: string
 }
 
 export interface PostedBy {

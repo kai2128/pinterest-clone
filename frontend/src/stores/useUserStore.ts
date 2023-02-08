@@ -23,10 +23,15 @@ export function useUserStore(navigate?: NavigateFunction) {
       setUser(r[0])
     })
   }
+  function logout() {
+    localStorage.clear()
+    navigate && navigate('/login', { replace: true })
+  }
   return {
     user: useStore(userStore),
     setUser,
     fetchUserInfo,
+    logout,
     login(_user: OAuthUser) {
       localStorage.setItem('user', JSON.stringify(_user))
       const { name, picture, sub: googleId } = _user
