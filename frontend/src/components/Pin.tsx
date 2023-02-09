@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoMdDownload } from 'react-icons/io'
 import { BsFillArrowUpRightCircleFill } from 'react-icons/bs'
 import * as uuid from 'uuid'
 import { AiTwotoneDelete } from 'react-icons/ai'
+import { FeedContext } from './Feed'
 import { client, urlFor } from '@/client'
 import type { MorePin, Pin as PinType } from '@/types'
 import { useUserStore } from '@/stores/useUserStore'
@@ -13,6 +14,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save, imageUrl } }: { p
   const { user } = useUserStore()
   const navigate = useNavigate()
   const alreadySaved = !!(save?.filter(item => item.postedBy._id === user._id))?.length
+  const refreshFeed = useContext(FeedContext)
   const savePin = (id: string) => {
     if (!alreadySaved) {
       client.patch(id)
@@ -27,14 +29,14 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save, imageUrl } }: { p
         }])
         .commit()
         .then(() => {
-          window.location.reload()
+          refreshFeed()
         })
     }
   }
   function deletePin(id: string) {
     client.delete(id)
       .then(() => {
-        window.location.reload()
+        refreshFeed()
       })
   }
 
