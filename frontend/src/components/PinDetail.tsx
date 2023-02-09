@@ -3,11 +3,11 @@ import { Link, useParams } from 'react-router-dom'
 import { MdDownloadForOffline } from 'react-icons/md'
 import * as uuid from 'uuid'
 import Spinner from './Spinner'
+import MasonryLayout from './MasonryLayout'
 import { useUserStore } from '@/stores/useUserStore'
 import { client, urlFor } from '@/client'
 import { pinDetailMoreQuery, pinDetailQuery } from '@/utils/data'
 import type { MorePin, PinDetail as PinDetailType } from '@/types'
-import MasonryLayout from './MasonryLayout'
 
 const PinDetail = () => {
   const { user } = useUserStore()
